@@ -5,6 +5,7 @@ import com.bolyartech.forge.server.misc.TemplateEngineFactory;
 import org.rythmengine.Rythm;
 import org.rythmengine.RythmEngine;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,6 +22,9 @@ public class RythmTemplateEngineFactory implements TemplateEngineFactory {
 
 
     public RythmTemplateEngineFactory(String templatePathPrefix) {
+        if (templatePathPrefix.startsWith(File.separator)) {
+            templatePathPrefix = templatePathPrefix.substring(1);
+        }
         mTemplatePathPrefix = templatePathPrefix;
 
         Map<String, Object> confs = new HashMap<>();
